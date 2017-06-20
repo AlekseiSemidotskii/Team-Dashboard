@@ -1,0 +1,29 @@
+{
+    "version": "0.1.0",
+    "command": "gulp",
+    "isShellCommand": false,
+    "args": [
+        "--no-color"
+    ],
+    "tasks": [
+        {
+            "taskName": "build",
+            "command": "gulp",
+            "args": ["default"],
+            "isShellCommand": true,
+            "isBuildCommand": true
+        }/*,
+        {
+            "taskName": "server",
+            "command": "gulp",
+            "args": ["default"],
+            "isShellCommand": true
+        },
+        {
+            "taskName": "server-dist",
+            "command": "gulp",
+            "args": ["server-dist"],
+            "isShellCommand": true
+        }*/
+    ]
+}

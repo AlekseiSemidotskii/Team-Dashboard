@@ -2,9 +2,9 @@
   "name": "team-dashboard",
   "version": "0.0.1",
   "description": "Project management tool for teams",
-  "main": "index.js",
+  "main": "server/app/index.js",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "gulp && concurrently \"gulp watch\" \"nodemon server/app/index.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,20 +24,22 @@
   "homepage": "https://github.com/AlekseiSemidotskii/Team-Dashboard#readme",
   "devDependencies": {
     "@types/body-parser": "^1.16.3",
-    "@types/debug": "0.0.29",
+    "@types/debug": "0.0.30",
     "@types/express": "^4.0.36",
     "@types/gulp": "^4.0.4",
-    "@types/node": "^7.0.31",
     "@types/morgan": "^1.7.32",
+    "@types/node": "^8.0.53",
     "gulp": "^3.9.1",
-    "gulp-typescript": "^3.1.7",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-typescript": "^3.2.3",
+    "gulp-uglify": "^3.0.0",
     "nodemon": "^1.11.0",
     "ts-node": "^3.0.6",
     "typescript": "^2.3.4"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
-    "debug": "^2.6.8",
+    "debug": "^3.1.0",
     "express": "^4.15.3",
     "morgan": "^1.8.2"
   }

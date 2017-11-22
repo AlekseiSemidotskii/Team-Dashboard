@@ -1,23 +1,41 @@
-const gulp = require('gulp');
-const ts = require('gulp-typescript');
-const JSON_FILES = ['src/*.json', 'src/**/*.json'];
+'use strict';
 
-// pull in the project TypeScript config
-const tsProject = ts.createProject('tsconfig.json');
+let gulp = require('gulp');
+let uglify = require('gulp-uglify');
+let ts = require('gulp-typescript');
+let sourcemaps = require('gulp-sourcemaps');
 
-gulp.task('scripts', () => {
-  const tsResult = tsProject.src()
-  .pipe(tsProject());
-  return tsResult.js.pipe(gulp.dest('dist'));
+let clientTsProject = ts.createProject('client/tsconfig.json');
+let serverTsProject = ts.createProject('server/tsconfig.json');
+
+// These tasks will be run when you just type "gulp"
+gulp.task('default', [ 'clientscripts', 'serverscripts' ]);
+
+// By adding this, we can run "gulp watch" to automatically
+// run the build when we change a script
+gulp.task('watch', () => {
+  gulp.watch('client/src/**/*.ts', [ 'clientscripts' ]);
+  gulp.watch('server/src/**/*.ts', [ 'serverscripts' ]);
 });
 
-gulp.task('watch', ['scripts'], () => {
-  gulp.watch('src/**/*.ts', ['scripts']);
+// This task can be run alone with "gulp clientscripts"
+gulp.task('clientscripts', () => {
+  return clientTsProject.src()
+                        .pipe(sourcemaps.init())
+                        .pipe(clientTsProject())
+                        .js
+                        //.pipe(uglify())
+                        .pipe(sourcemaps.write('.'))
+                        .pipe(gulp.dest('client/app'));
 });
 
-gulp.task('assets', function() {
-  return gulp.src(JSON_FILES)
-  .pipe(gulp.dest('dist'));
+// This task can be run alone with "gulp serverscripts"
+gulp.task('serverscripts', () => {
+  return serverTsProject.src()
+                        .pipe(sourcemaps.init())
+                        .pipe(serverTsProject())
+                        .js
+                        //.pipe(uglify())
+                        .pipe(sourcemaps.write('.'))
+                        .pipe(gulp.dest('server/app'));
 });
-
-gulp.task('default', ['watch', 'assets']);

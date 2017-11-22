@@ -2,13 +2,13 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "outDir": "dist",
+    "outDir": "app",
     "declaration": false,
     "removeComments": true,
     "noLib": false,
+    "lib": ["es2016", "dom"],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es2015"],
     "sourceMap": true,
     "pretty": true,
     "allowUnreachableCode": false,
@@ -17,20 +17,16 @@
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
     "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
     "typeRoots": [
-      "./node_modules/@types",
-      "./node_modules"
+      "../node_modules/@types",
+      "../node_modules"
     ],
     "types": [
-      "node"
+      "node"/*,
+      "jasmine",
+      "systemjs"*/
     ]
   },
-  "include": [
-    "./src/server/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
   "compileOnSave": false
 }

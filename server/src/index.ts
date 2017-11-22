@@ -1,9 +1,9 @@
 import * as http from 'http';
-import * as debug from 'debug';
+//import * as debug from 'debug';
 
-import App from './App';
+import App from './app';
 
-debug('ts-express:server');
+//debug('ts-express:server');
 
 const port = normalizePort(process.env.PORT || 3300);
 App.set('port', port);
@@ -40,5 +40,5 @@ function onError(error: NodeJS.ErrnoException): void {
 function onListening(): void {
   let addr = server.address();
   let bind = (typeof addr === 'string') ? `pipe ${addr}` : `port ${addr.port}`;
-  debug(`Listening on ${bind}`);
+  //debug(`Listening on ${bind}`);
 }

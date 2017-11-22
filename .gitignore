@@ -38,3 +38,5 @@ jspm_packages
 
 # Build results
 dist
+client/app
+server/app

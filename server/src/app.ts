@@ -18,12 +18,12 @@ class App {
 
   // Configure Express middleware.
   private middleware(): void {
-    
-    this.express.use(express.static('./client'));
+
     //this.express.use('/node_modules', express.static('./node_modules'));
     this.express.use(logger('dev'));
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
+    this.express.use(express.static(path.join(__dirname, '../../client')));
   }
 
   // Configure API endpoints.
@@ -35,7 +35,7 @@ class App {
     // placeholder route handler
     router.get('/', (req, res, next) => {
       res.json({
-        message: 'Hello Alex!'
+        message: 'Hello World!'
       });
     });
 

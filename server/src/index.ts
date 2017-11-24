@@ -2,10 +2,13 @@ import * as http from 'http';
 //import * as debug from 'debug';
 
 import App from './app';
+import config from './config/web';
 
 //debug('ts-express:server');
 
-const port = normalizePort(process.env.PORT || 3300);
+console.log(`Starting: environment = ${config.env}, port = ${config.server.port}`)
+
+const port = normalizePort(config.server.port);
 App.set('port', port);
 
 const server = http.createServer(App);

@@ -3,6 +3,9 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 
+import config from './config/web'
+import JiraIssuesProvider from './issues/providers/jira/jiraIssuesProvider';
+
 // Creates and configures an ExpressJS web server.
 class App {
 
@@ -37,6 +40,31 @@ class App {
       res.json({
         message: 'Hello World!'
       });
+    });
+
+    const jiraIssuesProvider = new JiraIssuesProvider(config.appConfig.jiraIssuesProviderConfig);
+
+    router.get('/issue/:issueKey?', async (req, res, next) => {
+      try {
+        const issueKey = req.params.issueKey;
+        let issue = await jiraIssuesProvider.getIssue(issueKey);
+        res.json(issue);
+      } catch (error) {
+        res.json({
+          message: error
+        });
+      }
+    });
+
+    router.get('/issues/planned', async (req, res, next) => {
+      try {
+        let issues = await jiraIssuesProvider.getPlannedIssues();
+        res.json(issues);
+      } catch (error) {
+        res.json({
+          message: error
+        });
+      }
     });
 
     this.express.use('/api', router);

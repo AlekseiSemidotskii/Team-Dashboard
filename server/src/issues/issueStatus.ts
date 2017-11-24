@@ -1,0 +1,4 @@
+enum IssueStatus {
+    Open,
+    Closed
+}

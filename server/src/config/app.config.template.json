@@ -1,0 +1,11 @@
+{
+    "issuesProvider": "jira",
+    "jiraIssuesProviderConfig": {
+        "url": "http://jira-host:port",
+        "username": "LOGIN",
+        "password": "PASSWORD",
+        "plannedIssuesFilterName": "ENTER FILTER NAME HERE",
+        "workDaysInWeek": 5,
+        "workHoursInDay": 8
+    }
+}

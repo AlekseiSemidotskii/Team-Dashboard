@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "outDir": "app",
+    "outDir": "dist",
     "declaration": false,
     "removeComments": true,
     "noLib": false,
@@ -30,7 +30,7 @@
   ],
   "exclude": [
     "node_modules",
-    "app"
+    "dist"
   ],
   "compileOnSave": false
 }

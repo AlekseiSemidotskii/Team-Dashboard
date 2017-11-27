@@ -27,7 +27,7 @@ gulp.task('clientscripts', () => {
                         .js
                         //.pipe(uglify())
                         .pipe(sourcemaps.write('.'))
-                        .pipe(gulp.dest('client/app'));
+                        .pipe(gulp.dest('client/dist'));
 });
 
 // This task can be run alone with "gulp serverscripts"
@@ -38,10 +38,10 @@ gulp.task('serverscripts', () => {
                         .js
                         //.pipe(uglify())
                         .pipe(sourcemaps.write('.'))
-                        .pipe(gulp.dest('server/app'));
+                        .pipe(gulp.dest('server/dist'));
 });
 
 gulp.task('server-tests', () => {
-  gulp.src('server/app/**/*spec.js')
+  gulp.src('server/dist/**/*spec.js')
     .pipe(mocha(/*{reporter: 'nyan'}*/))
 });

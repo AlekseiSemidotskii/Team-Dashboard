@@ -35,13 +35,12 @@ export default class JiraIssuesProvider {
             let issues = await request(options);
             return issues.issues.map((issue: any) => {
                 let f = issue.fields;
+                
                 return new Issue(issue.key, f.summary, 
                     new User(f.creator.key, f.creator.displayName),
                     new User(f.assignee.key, f.assignee.displayName), 
                     f.issuetype.name, f.status.name,
-                    new IssueTimeTracking(f.timeestimate, f.timespent, 
-                        IssueTimeTracking.buildDisplayTime(f.timeestimate, this.workTimeConfig), 
-                        IssueTimeTracking.buildDisplayTime(f.timespent, this.workTimeConfig))
+                    new IssueTimeTracking(f.timeoriginalestimate, f.timespent, this.workTimeConfig)
                 );
             });
         } catch(err) {

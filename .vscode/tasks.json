@@ -12,7 +12,14 @@
             "args": ["default"],
             "isShellCommand": true,
             "isBuildCommand": true
-        }/*,
+        },
+        {
+            "taskName": "serverscripts",
+            "command": "gulp",
+            "args": ["serverscripts"],
+            "isShellCommand": true
+        }
+        /*,
         {
             "taskName": "server",
             "command": "gulp",

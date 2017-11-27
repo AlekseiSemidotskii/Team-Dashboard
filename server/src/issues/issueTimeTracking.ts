@@ -1,25 +1,33 @@
 // all estimates in minutes
 
 export class IssueTimeTracking {
-     
-    constructor (public originalEstimateSeconds: number, public spentSeconds: number, 
-                 public originalEstimateText: string, public spentText: string) {
+    
+    public remainingTimeSeconds: number;
 
+    public originalEstimateText: string;
+    public spentTimeText: string;
+    public remainingTimeText: string;
+
+    constructor (public originalEstimateSeconds: number, public spentTimeSeconds: number, workTimeConfig: WorkTimeConfig) {
+        this.remainingTimeSeconds = spentTimeSeconds ? originalEstimateSeconds - spentTimeSeconds : originalEstimateSeconds;
+        this.originalEstimateText = this.buildDisplayTime(originalEstimateSeconds, workTimeConfig);
+        this.spentTimeText = this.buildDisplayTime(spentTimeSeconds, workTimeConfig);
+        this.remainingTimeText = this.buildDisplayTime(this.remainingTimeSeconds, workTimeConfig);
     }
 
-    public static buildDisplayTime(time: number, workingTimeConfig: WorkTimeConfig) : string {
+    private buildDisplayTime(time: number, workingTimeConfig: WorkTimeConfig) : string {
         // weeks, days, hours, minutes
         let remainder = time;
         const secondsInWeek = workingTimeConfig.daysInWeek * workingTimeConfig.hoursInDay * SecondsCount.InHour;
         const secondsInDay = workingTimeConfig.hoursInDay * SecondsCount.InHour;
         
-        const weeks = Math.round(remainder/secondsInWeek);
+        const weeks = Math.floor(remainder/secondsInWeek);
         remainder %= secondsInWeek;
-        const days = Math.round(remainder/secondsInDay);
+        const days = Math.floor(remainder/secondsInDay);
         remainder %= secondsInDay;
-        const hours = Math.round(remainder/SecondsCount.InHour);
+        const hours = Math.floor(remainder/SecondsCount.InHour);
         remainder %= SecondsCount.InHour;
-        const minutes = Math.round(remainder/SecondsCount.InMinute);
+        const minutes = Math.floor(remainder/SecondsCount.InMinute);
 
         let timeString = '';
         if(weeks != 0) timeString+=`${weeks} weeks `;

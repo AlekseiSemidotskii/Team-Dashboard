@@ -2,6 +2,7 @@
 
 let gulp = require('gulp');
 let uglify = require('gulp-uglify');
+var concat = require("gulp-concat-js");
 let ts = require('gulp-typescript');
 let sourcemaps = require('gulp-sourcemaps');
 let mocha = require('gulp-mocha');
@@ -44,4 +45,37 @@ gulp.task('serverscripts', () => {
 gulp.task('server-tests', () => {
   gulp.src('server/dist/**/*spec.js')
     .pipe(mocha(/*{reporter: 'nyan'}*/))
+});
+
+/* client tasks */
+
+gulp.task('build-client', ['clientscripts', 'client-copy-static']);
+
+gulp.task('clean-client-distr', function () {
+  return gulp.src('./client/dist/*', {
+          read: false
+      })
+      .pipe(clean({
+          force: true
+      }));
+});
+
+gulp.task('client-copy-static', function () {
+  return gulp.src(['./client/src/**/*.html', './client/src/**/*.css', './client/src/favicon.ico'
+      ])
+      .pipe(gulp.dest('./client/dist/'));
+});
+
+gulp.task('client-concat-js', function () {
+  return gulp.src(["./client/dist/**/*.js"])
+      .pipe(sourcemaps.init())
+        .pipe(concat({
+            "target": "bundle.js", // Name to concatenate to 
+            "entry": "./main.js" // Entrypoint for the application, main module 
+                                 // The `./` part is important! The path is relative to 
+                                 // whatever gulp decides is the base-path, in this 
+                                 // example that is `./lib` 
+        }))
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest("client/dist"));
 });

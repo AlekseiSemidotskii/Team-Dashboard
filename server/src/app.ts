@@ -25,6 +25,15 @@ class App {
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
     this.express.use(express.static(path.join(__dirname, '../../client')));
+
+    this.express.use(this.allowCorsMiddleware);
+  }
+
+  private allowCorsMiddleware(req:express.Request, res:express.Response, next:Function){
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
+    next();
   }
 
   // Configure API endpoints.

@@ -2,9 +2,7 @@ import * as path from 'path';
 import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
-
-import config from './config/web'
-import JiraIssuesProvider from './issues/providers/jira/jiraIssuesProvider';
+import Routes from './routes';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -31,41 +29,10 @@ class App {
 
   // Configure API endpoints.
   private routes(): void {
-    /* This is just to get up and running, and to make sure what we've got is
-     * working so far. This function will change when we start to add more
-     * API endpoints */
+
     let router = express.Router();
-    // placeholder route handler
-    router.get('/', (req, res, next) => {
-      res.json({
-        message: 'Hello World!'
-      });
-    });
-
-    const jiraIssuesProvider = new JiraIssuesProvider(config.appConfig.jiraIssuesProviderConfig);
-
-    router.get('/issue/:issueKey?', async (req, res, next) => {
-      try {
-        const issueKey = req.params.issueKey;
-        let issue = await jiraIssuesProvider.getIssue(issueKey);
-        res.json(issue);
-      } catch (error) {
-        res.json({
-          message: error
-        });
-      }
-    });
-
-    router.get('/issues/planned', async (req, res, next) => {
-      try {
-        let issues = await jiraIssuesProvider.getPlannedIssues();
-        res.json(issues);
-      } catch (error) {
-        res.json({
-          message: error
-        });
-      }
-    });
+    
+    Routes.register(router);
 
     this.express.use('/api', router);
   }

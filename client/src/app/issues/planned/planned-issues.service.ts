@@ -4,17 +4,18 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import IssueViewModel from '../issueViewModel';
+import { ApiUrlService } from '../../config/api-url.service';
 
 @Injectable()
 export class PlannedIssuesService {
 
-  private issuesUrl = 'http://localhost:3300/api/issues/planned'; 
+  PLANNED_ISSUES_URL = '/issues/planned'; 
 
-  constructor(private http: HttpClient) { 
+  constructor(private apiUrlService: ApiUrlService, private http: HttpClient) { 
 
   }
 
   getPlannedIssues(): Observable<IssueViewModel[]> {
-    return this.http.get<IssueViewModel[]>(this.issuesUrl);
+    return this.http.get<IssueViewModel[]>(this.apiUrlService.apiUrl + this.PLANNED_ISSUES_URL);
   }
 }

@@ -15,7 +15,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let issue of issues">
-            <td>{{issue.key}}</td>
+            <td><a href="{{issue.externalUrl}}" target="_blank">{{issue.key}}</a></td>
             <td>{{issue.summary}}</td>
             <td>{{issue.reporter.displayName}}</td>
             <td>{{issue.assignee.displayName}}</td>

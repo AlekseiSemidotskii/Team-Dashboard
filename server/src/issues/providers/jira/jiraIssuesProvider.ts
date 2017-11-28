@@ -3,8 +3,9 @@ import * as request from 'request-promise-native';
 import Issue from '../../issue';
 import User from '../../user';
 import { IssueTimeTracking, WorkTimeConfig } from '../../issueTimeTracking';
+import IIssuesProvider from '../issuesProvider';
 
-export default class JiraIssuesProvider {
+export default class JiraIssuesProvider implements IIssuesProvider {
 
     private jiraConfig: JiraConfig;
     private authSession: any;
@@ -15,7 +16,7 @@ export default class JiraIssuesProvider {
         this.workTimeConfig = new WorkTimeConfig(jiraConfig.workDaysInWeek, jiraConfig.workHoursInDay);
     }
 
-    public async getIssue (issueKey: string) {
+    public async getIssue (issueKey: string): Promise<Issue> {
         try {          
             let options = this.buildRequestOptions(`/rest/api/2/issue/${issueKey}`);
             let issue = await request(options);
@@ -29,7 +30,7 @@ export default class JiraIssuesProvider {
         return this.searchIssues(`filter="${this.jiraConfig.plannedIssuesFilterName}"`);
     }
 
-    private async searchIssues (jql: string) {
+    private async searchIssues (jql: string): Promise<Issue[]> {
         try {
             let options = this.buildRequestOptions(`/rest/api/2/search?jql=${encodeURIComponent(jql)}`);
             let issues = await request(options);

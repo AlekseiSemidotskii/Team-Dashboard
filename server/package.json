@@ -1,11 +1,11 @@
 {
-  "name": "team-dashboard",
+  "name": "team-dashboard-server",
   "version": "0.0.1",
   "description": "Project management tool for teams",
-  "main": "server/dist/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "gulp && concurrently \"gulp watch\" \"PORT=3300 NODE_ENV=development nodemon server/dist/index.js\"",
-    "test": "mocha -r ts-node/register server/src/**/*.spec.ts"
+    "start": "gulp && concurrently \"gulp watch\" \"PORT=3300 NODE_ENV=development nodemon dist/index.js\"",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts"
   },
   "repository": {
     "type": "git",
@@ -43,9 +43,7 @@
     "mocha": "^4.0.1",
     "nodemon": "^1.11.0",
     "ts-node": "^3.0.6",
-    "typescript": "^2.4.2",
-    "codelyzer": "^4.0.1",
-    "tslint": "~5.7.0"
+    "typescript": "^2.4.2"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -54,18 +52,6 @@
     "joi": "^13.0.2",
     "morgan": "^1.8.2",
     "request": "^2.83.0",
-    "request-promise-native": "^1.0.5",
-    "@angular/animations": "^5.0.0",
-    "@angular/common": "^5.0.0",
-    "@angular/compiler": "^5.0.0",
-    "@angular/core": "^5.0.0",
-    "@angular/forms": "^5.0.0",
-    "@angular/http": "^5.0.0",
-    "@angular/platform-browser": "^5.0.0",
-    "@angular/platform-browser-dynamic": "^5.0.0",
-    "@angular/router": "^5.0.0",
-    "core-js": "^2.4.1",
-    "rxjs": "^5.5.2",
-    "zone.js": "^0.8.14"
+    "request-promise-native": "^1.0.5"
   }
 }

@@ -2,23 +2,28 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { PlannedIssuesService } from './planning/issues/planned-issues.service';
+import { PlannedIssuesService } from './planning/planned-issues.service';
 import { ApiUrlService } from './config/api-url.service';
 import { PlannedIssuesComponent } from './planning/issues/planned-issues.component';
 import { IssueTimePipe } from './issues/issue-time.pipe';
+import { PlanningBoardComponent } from './planning/board/planning-board.component';
+import { PlannedWorkloadComponent } from './planning/workload/planned-workload.component';
+import { PlannedWorkloadCalculatorService } from './planning/workload/planned-workload-calculator.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        PlanningBoardComponent,
         PlannedIssuesComponent,
+        PlannedWorkloadComponent,
         IssueTimePipe
       ],
       imports: [
         HttpClientTestingModule
       ],
-      providers: [PlannedIssuesService, ApiUrlService]
+      providers: [PlannedIssuesService, ApiUrlService, PlannedWorkloadCalculatorService]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import IssueViewModel from '../../issues/issueViewModel';
-import { PlannedIssuesService } from './planned-issues.service';
+import { PlannedIssuesService } from '../planned-issues.service';
 
 @Component({
   selector: 'app-planned-issues',

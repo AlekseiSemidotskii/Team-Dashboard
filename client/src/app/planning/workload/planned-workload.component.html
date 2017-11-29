@@ -1,3 +1,18 @@
-<p>
-  planned-workload works!
-</p>
+<table class="table table-sm table-responsive table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>Assignee</th>
+            <th>Estimate</th>
+            <th>Spent</th>
+            <th>Remaining</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let work of workload">
+            <td>{{ work.assignee }}</td>
+            <td>{{ work.timeTracking.originalEstimateSeconds | issueTime }}</td>
+            <td>{{ work.timeTracking.spentTimeSeconds | issueTime }}</td>
+            <td>{{ work.timeTracking.remainingTimeSeconds | issueTime }}</td>
+        </tr>
+    </tbody>
+</table>

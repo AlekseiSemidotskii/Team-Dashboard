@@ -1,5 +1,4 @@
 import WorkTimeConfig from './workTimeConfig';
-import TimeConvertor from './timeConvertor';
 
 export class TimeTrackingViewModel {
 

@@ -1,6 +1,6 @@
 <table class="table table-sm table-responsive table-hover table-bordered">
     <thead>
-        <tr>
+        <tr class="table-primary">
             <th>Assignee</th>
             <th>Estimate</th>
             <th>Spent</th>
@@ -10,9 +10,17 @@
     <tbody>
         <tr *ngFor="let work of workload">
             <td>{{ work.assignee }}</td>
-            <td>{{ work.timeTracking.originalEstimateSeconds | issueTime }}</td>
-            <td>{{ work.timeTracking.spentTimeSeconds | issueTime }}</td>
-            <td>{{ work.timeTracking.remainingTimeSeconds | issueTime }}</td>
+            <td>{{ work.timeTracking.originalEstimateSeconds | issueTime: 'RoundToDays' }}</td>
+            <td>{{ work.timeTracking.spentTimeSeconds | issueTime: 'RoundToDays' }}</td>
+            <td>{{ work.timeTracking.remainingTimeSeconds | issueTime: 'RoundToDays' }}</td>
         </tr>
     </tbody>
+    <tfoot>
+        <tr class="table-secondary">
+            <th>Total</th>
+            <td>{{ workloadTotals.originalEstimateSeconds | issueTime: 'RoundToDays' }}</td>
+            <td>{{ workloadTotals.spentTimeSeconds | issueTime: 'RoundToDays' }}</td>
+            <td>{{ workloadTotals.remainingTimeSeconds | issueTime: 'RoundToDays' }}</td>
+        </tr>
+    </tfoot>
 </table>

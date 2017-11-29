@@ -20,9 +20,9 @@
             <td>{{issue.reporter.displayName}}</td>
             <td>{{issue.assignee.displayName}}</td>
             <td>{{issue.status}}</td>
-            <td>{{issue.timeTracking.originalEstimateText}}</td>
-            <td>{{issue.timeTracking.spentTimeText}}</td>
-            <td>{{issue.timeTracking.remainingTimeText}}</td>
+            <td>{{issue.timeTracking.originalEstimateSeconds | issueTime}}</td>
+            <td>{{issue.timeTracking.spentTimeSeconds | issueTime}}</td>
+            <td>{{issue.timeTracking.remainingTimeSeconds | issueTime}}</td>
         </tr>
     </tbody>
 </table>

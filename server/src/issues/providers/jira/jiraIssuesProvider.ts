@@ -16,6 +16,10 @@ export default class JiraIssuesProvider implements IIssuesProvider {
         this.workTimeConfig = new WorkTimeConfig(jiraConfig.workDaysInWeek, jiraConfig.workHoursInDay);
     }
 
+    getWorkTimeConfig(): WorkTimeConfig {
+        return this.workTimeConfig;
+    }
+
     public async getIssue (issueKey: string): Promise<Issue> {
         try {          
             let options = this.buildRequestOptions(`/rest/api/2/issue/${issueKey}`);
@@ -41,7 +45,7 @@ export default class JiraIssuesProvider implements IIssuesProvider {
                     new User(f.creator.key, f.creator.displayName),
                     new User(f.assignee.key, f.assignee.displayName), 
                     f.issuetype.name, f.status.name,
-                    new IssueTimeTracking(f.timeoriginalestimate, f.timespent, this.workTimeConfig)
+                    new IssueTimeTracking(f.timeoriginalestimate, f.timespent)
                 );
             });
         } catch(err) {

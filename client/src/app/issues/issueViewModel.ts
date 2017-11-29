@@ -6,6 +6,7 @@ export default class IssueViewModel {
     constructor (public externalUrl: string, 
                  public key: string, 
                  public summary: string, 
+                 public category: string,
                  public reporter: UserViewModel, 
                  public assignee: UserViewModel,
                  public type: string, 

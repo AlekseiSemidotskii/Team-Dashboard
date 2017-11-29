@@ -3,6 +3,7 @@
 <table class="table table-sm table-responsive table-hover">
     <thead>
         <tr>
+            <th>Category</th>
             <th>Key</th>
             <th>Summary</th>
             <th>Reporter</th>
@@ -15,6 +16,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let issue of issues">
+            <td>{{issue.category}}</td>
             <td><a href="{{issue.externalUrl}}" target="_blank">{{issue.key}}</a></td>
             <td>{{issue.summary}}</td>
             <td>{{issue.reporter.displayName}}</td>

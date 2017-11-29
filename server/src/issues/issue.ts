@@ -7,6 +7,7 @@ export default class Issue {
 
     constructor (public externalUrl: string, 
                  public key: string, public summary: string, 
+                 public category: string,
                  public reporter: User, public assignee: User,
                  public type: string, public status: string, 
                  timeTracking?: IssueTimeTracking) {

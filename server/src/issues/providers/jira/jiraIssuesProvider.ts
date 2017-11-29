@@ -41,7 +41,9 @@ export default class JiraIssuesProvider implements IIssuesProvider {
             return issues.issues.map((issue: any) => {
                 let f = issue.fields;
                 
-                return new Issue(`${this.jiraConfig.url}/browse/${issue.key}`, issue.key, f.summary, 
+                return new Issue(`${this.jiraConfig.url}/browse/${issue.key}`, 
+                    issue.key, f.summary, 
+                    f.customfield_10622 && f.customfield_10622.value || '', // TODO: get property name from config
                     new User(f.creator.key, f.creator.displayName),
                     new User(f.assignee.key, f.assignee.displayName), 
                     f.issuetype.name, f.status.name,

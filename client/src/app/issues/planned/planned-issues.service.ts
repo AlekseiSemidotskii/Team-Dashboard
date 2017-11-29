@@ -25,6 +25,7 @@ export class PlannedIssuesService {
                   i.externalUrl, 
                   i.key, 
                   i.summary, 
+                  i.category,
                   new UserViewModel(i.reporter.login, i.reporter.displayName),
                   new UserViewModel(i.assignee.login, i.assignee.displayName), 
                   i.type, 

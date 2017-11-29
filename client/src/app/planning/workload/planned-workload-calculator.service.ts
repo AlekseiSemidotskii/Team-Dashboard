@@ -19,8 +19,7 @@ export class PlannedWorkloadCalculatorService {
             const assigneesTotals = issues.reduce( (r, issue) => {
                 const assigneeName = issue.assignee.displayName;
                 r[assigneeName] = r[assigneeName] || new AssigneeWorkload(assigneeName);
-                r[assigneeName].timeTracking.originalEstimateSeconds += issue.timeTracking.originalEstimateSeconds || 0;
-                r[assigneeName].timeTracking.spentTimeSeconds += issue.timeTracking.spentTimeSeconds || 0;
+                r[assigneeName].timeTracking.increase(issue.timeTracking.originalEstimateSeconds, issue.timeTracking.spentTimeSeconds);
                 return r;
             }, Object.create(null));
 

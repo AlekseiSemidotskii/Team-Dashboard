@@ -5,6 +5,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { PlannedIssuesService } from './issues/planned/planned-issues.service';
 import { ApiUrlService } from './config/api-url.service';
 import { PlannedIssuesComponent } from './issues/planned/planned-issues.component';
+import { IssueTimePipe } from './issues/issue-time.pipe';
 
 describe('AppComponent', () => {
   
@@ -12,7 +13,8 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        PlannedIssuesComponent
+        PlannedIssuesComponent,
+        IssueTimePipe
       ],
       imports: [
         HttpClientTestingModule

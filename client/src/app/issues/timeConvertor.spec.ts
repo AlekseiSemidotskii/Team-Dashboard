@@ -15,4 +15,9 @@ describe('TimeConvertor', () => {
     expect(result).toBe('3 days');
   });
 
+  it('time -3600 sec should be -1 hours', () => {
+    let result = TimeConvertor.buildDisplayTime(-3600, workTimeConfig);
+    expect(result).toBe('-1 hours');
+  });
+
 });

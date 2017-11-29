@@ -4,7 +4,7 @@ export default class TimeConvertor {
 
     public static buildDisplayTime(time: number, workingTimeConfig?: WorkTimeConfig) : string {
         // weeks, days, hours, minutes
-        let remainder = time;
+        let remainder = Math.abs(time);
 
         let timeConfig = workingTimeConfig ? workingTimeConfig : WorkTimeConfig.defaultConfig();
 
@@ -24,6 +24,7 @@ export default class TimeConvertor {
         if(days != 0) timeString+=`${days} days `;
         if(hours != 0) timeString+=`${hours} hours `;
         if(minutes != 0) timeString+=`${minutes} minutes `;
+        if(time < 0) timeString = '-' + timeString;
         return timeString.trim();
     }
 

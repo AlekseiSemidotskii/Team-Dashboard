@@ -4,10 +4,10 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map as rxmap } from 'rxjs/operators';
 
-import IssueViewModel from '../issueViewModel';
+import IssueViewModel from '../../issues/issueViewModel';
 import { ApiUrlService } from '../../config/api-url.service';
-import UserViewModel from '../userViewModel';
-import { TimeTrackingViewModel } from '../timeTrackingViewModel';
+import UserViewModel from '../../issues/userViewModel';
+import { TimeTrackingViewModel } from '../../issues/timeTrackingViewModel';
 
 @Injectable()
 export class PlannedIssuesService {

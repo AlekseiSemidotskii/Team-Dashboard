@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { PlannedIssuesComponent } from './issues/planned/planned-issues.component';
-import { PlannedIssuesService } from './issues/planned/planned-issues.service';
+import { PlannedIssuesComponent } from './planning/issues/planned-issues.component';
+import { PlannedIssuesService } from './planning/issues/planned-issues.service';
 import { ApiUrlService } from './config/api-url.service';
 import { IssueTimePipe } from './issues/issue-time.pipe';
 

@@ -2,9 +2,9 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { PlannedIssuesService } from './issues/planned/planned-issues.service';
+import { PlannedIssuesService } from './planning/issues/planned-issues.service';
 import { ApiUrlService } from './config/api-url.service';
-import { PlannedIssuesComponent } from './issues/planned/planned-issues.component';
+import { PlannedIssuesComponent } from './planning/issues/planned-issues.component';
 import { IssueTimePipe } from './issues/issue-time.pipe';
 
 describe('AppComponent', () => {

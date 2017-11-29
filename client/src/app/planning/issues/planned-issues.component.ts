@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import IssueViewModel from '../issueViewModel';
+import IssueViewModel from '../../issues/issueViewModel';
 import { PlannedIssuesService } from './planned-issues.service';
 
 @Component({

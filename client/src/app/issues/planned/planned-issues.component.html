@@ -8,6 +8,7 @@
             <th>Summary</th>
             <th>Reporter</th>
             <th>Assignee</th>
+            <th>Type</th>
             <th>Status</th>
             <th>Estimate</th>
             <th>Spent</th>
@@ -16,15 +17,16 @@
     </thead>
     <tbody>
         <tr *ngFor="let issue of issues">
-            <td>{{issue.category}}</td>
-            <td><a href="{{issue.externalUrl}}" target="_blank">{{issue.key}}</a></td>
-            <td>{{issue.summary}}</td>
-            <td>{{issue.reporter.displayName}}</td>
-            <td>{{issue.assignee.displayName}}</td>
-            <td>{{issue.status}}</td>
-            <td>{{issue.timeTracking.originalEstimateSeconds | issueTime}}</td>
-            <td>{{issue.timeTracking.spentTimeSeconds | issueTime}}</td>
-            <td>{{issue.timeTracking.remainingTimeSeconds | issueTime}}</td>
+            <td>{{ issue.category }}</td>
+            <td><a href="{{issue.externalUrl}}" target="_blank">{{ issue.key }}</a></td>
+            <td>{{ issue.summary }}</td>
+            <td>{{ issue.reporter.displayName }}</td>
+            <td>{{ issue.assignee.displayName }}</td>
+            <td>{{ issue.type }}</td>
+            <td>{{ issue.status }}</td>
+            <td>{{ issue.timeTracking.originalEstimateSeconds | issueTime }}</td>
+            <td>{{ issue.timeTracking.spentTimeSeconds | issueTime }}</td>
+            <td>{{ issue.timeTracking.remainingTimeSeconds | issueTime }}</td>
         </tr>
     </tbody>
 </table>

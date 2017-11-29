@@ -1,4 +1,4 @@
-export default class WorkTimeConfig { 
+export default class WorkTimeConfig {
     constructor (public daysInWeek: number, public hoursInDay: number) {
 
     }

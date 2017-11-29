@@ -8,7 +8,6 @@ import { PlannedIssuesComponent } from './issues/planned/planned-issues.componen
 import { IssueTimePipe } from './issues/issue-time.pipe';
 
 describe('AppComponent', () => {
-  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [

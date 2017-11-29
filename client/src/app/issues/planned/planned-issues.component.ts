@@ -8,7 +8,7 @@ import { PlannedIssuesService } from './planned-issues.service';
 })
 
 export class PlannedIssuesComponent implements OnInit  {
-  
+
   issues: IssueViewModel[];
 
   constructor (private plannedIssueService: PlannedIssuesService) {
@@ -23,5 +23,4 @@ export class PlannedIssuesComponent implements OnInit  {
     this.plannedIssueService.getPlannedIssues()
         .subscribe(issues => this.issues = issues);
   }
-  
 }
